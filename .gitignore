@@ -1,2 +1,3 @@
 .sublime
 .playwright-cli
+*.zip

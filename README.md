@@ -23,7 +23,7 @@ These scripts let you keep reading all the good stuff (content), but make the ho
 The scripts are tested to be compatible with the following extensions:
 
 1. [userscripts](https://github.com/quoid/userscripts) for Safari (MacOSX/iOS)
-1. (chrome support tbd.)
+1. [Tampermonkey](https://www.tampermonkey.net/) for Chrome
 
 ### Safari
 
@@ -31,4 +31,14 @@ Follow the instructions [here](https://github.com/quoid/userscripts?tab=readme-o
 
 Note: on iOS you should disable the Preload Top Hit option in your Safari settings. Due to Apple bug, scripts don't always run on a preloaded URL.
 
-### Chrome tbd.
+### Chrome
+
+Install the [Tampermonkey](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) extension from the Chrome Web Store. You can easily import all scripts into Tampermonkey using a zip file.
+
+### Exporting to Zip
+
+Run the following command to package the scripts as a zip file for easy import:
+
+```bash
+zip -j scripts.zip scripts/*.js
+```

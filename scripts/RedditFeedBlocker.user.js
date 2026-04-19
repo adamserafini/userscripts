@@ -2,6 +2,7 @@
 // @name        RedditFeedBlocker
 // @description Block Reddit Feed and Masthead Carousel
 // @match       https://www.reddit.com/
+// @match       https://www.reddit.com/?*
 // @grant       GM.addStyle
 // ==/UserScript==
 

@@ -50,7 +50,34 @@ Many modern websites (like LinkedIn, Facebook, X/Twitter) heavily obfuscate thei
    `main > div:first-child > div:nth-child(2) > div > *:not(:first-child)`
 1. **ARIA / Accessibility Attributes:** Look for standard HTML5 elements or ARIA roles that rarely change:
    `[role="feed"]`, `[aria-label*="Feed"]`, `main`, `article`.
-1. **Playwright:** If the site doesn't require a complex login, or if the user is willing to manually log in within a Playwright persistent session, you can use the `playwright-cli` skill.
+1. **Mobile DOM Inspection:** For mobile-specific DOM structures, you can automate switching Safari's User Agent using AppleScript GUI scripting to inspect the mobile version:
+   ```bash
+   osascript -e '
+   tell application "Safari"
+       activate
+       set targetTab to missing value
+       repeat with w in windows
+           repeat with t in tabs of w
+               if URL of t contains "sitename.com" then
+                   set targetTab to t
+                   set current tab of w to t
+                   set index of w to 1
+                   exit repeat
+               end if
+           end repeat
+           if targetTab is not missing value then exit repeat
+       end repeat
+   end tell
+
+   tell application "System Events"
+       tell process "Safari"
+           -- Note: The exact menu item text might vary by OS version, e.g. "Safari — iOS 17 — iPhone" or "Safari — iOS 26 — iPhone"
+           click menu item "Safari — iOS 26 — iPhone" of menu 1 of menu item "User Agent" of menu 1 of menu bar item "Develop" of menu bar 1
+       end tell
+   end tell
+   '
+   ```
+   *Note: Wait a few seconds for the page to reload before running subsequent AppleScript DOM queries.*
 
 ## 3. Implement and Test
 

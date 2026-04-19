@@ -22,4 +22,11 @@ GM.addStyle(`
 [role="main"] [role="article"] {
     display: none !important;
 }
+
+/* Hard Fallback: Facebook desktop heavily obfuscates and removes ARIA roles.
+   We target the central column and hide everything from the 3rd child onwards.
+   This guarantees the feed is hidden, while keeping "Create a post" visible. */
+[role="main"] > div:first-child > div:first-child > div:first-child > div:nth-child(2) > div:first-child > div:nth-child(n+3) {
+    display: none !important;
+}
 `);

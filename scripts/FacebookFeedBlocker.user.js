@@ -35,7 +35,8 @@ GM.addStyle(`
 #m_newsfeed_stream,
 #MNewsFeed,
 #m_news_feed_stream,
-div[data-sigil="marea"] {
+div[data-sigil="marea"],
+[data-tracking-duration-id] {
     display: none !important;
 }
 `);

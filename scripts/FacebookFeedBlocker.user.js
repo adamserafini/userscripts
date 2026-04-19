@@ -2,6 +2,7 @@
 // @name         FacebookFeedBlocker
 // @description  Hides the Facebook feed to prevent distraction
 // @match        https://www.facebook.com/*
+// @match        https://m.facebook.com/*
 // @grant        GM.addStyle
 // ==/UserScript==
 
@@ -27,6 +28,14 @@ GM.addStyle(`
    We target the central column and hide everything from the 3rd child onwards.
    This guarantees the feed is hidden, while keeping "Create a post" visible. */
 [role="main"] > div:first-child > div:first-child > div:first-child > div:nth-child(2) > div:first-child > div:nth-child(n+3) {
+    display: none !important;
+}
+
+/* Mobile Facebook (m.facebook.com) selectors */
+#m_newsfeed_stream,
+#MNewsFeed,
+#m_news_feed_stream,
+div[data-sigil="marea"] {
     display: none !important;
 }
 `);
